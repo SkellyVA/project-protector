@@ -53,7 +53,7 @@ try {
 # 2. Target installation paths
 $InstallDir = Join-Path $HOME ".project-protector"
 $BinDir = Join-Path $InstallDir "bin"
-$RepoUrl = "https://github.com/firdavsabdualiev/project-protector.git"
+$RepoUrl = "https://github.com/SkellyVA/project-protector.git"
 
 if ($env:PROTECTOR_REPO_URL) {
     $RepoUrl = $env:PROTECTOR_REPO_URL
@@ -89,7 +89,7 @@ if ($CurrentScriptDir -and (Test-Path (Join-Path $CurrentScriptDir "cli.js"))) {
                 & git clone --depth 1 $RepoUrl $InstallDir
             }
         } else {
-            $ZipUrl = "https://github.com/firdavsabdualiev/project-protector/archive/refs/heads/main.zip"
+            $ZipUrl = "https://github.com/SkellyVA/project-protector/archive/refs/heads/main.zip"
             $TempZip = Join-Path $env:TEMP "project-protector.zip"
             $TempExtract = Join-Path $env:TEMP "protector-extracted"
             Invoke-WebRequest -Uri $ZipUrl -OutFile $TempZip -UseBasicParsing

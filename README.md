@@ -14,18 +14,18 @@
 ### 🪟 Windows (PowerShell)
 Run in PowerShell (as Administrator or Standard User):
 ```powershell
-irm https://raw.githubusercontent.com/firdavsabdualiev/project-protector/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/SkellyVA/project-protector/main/install.ps1 | iex
 ```
 
 ### 🐧 Linux & 🍎 macOS (Bash / Zsh)
 Run in your terminal:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/firdavsabdualiev/project-protector/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/SkellyVA/project-protector/main/install.sh | bash
 ```
 
 ### 📦 Global NPM Install
 ```bash
-npm install -g https://github.com/firdavsabdualiev/project-protector.git
+npm install -g https://github.com/SkellyVA/project-protector.git
 ```
 
 Once installed, the commands `protector` and `encrypter` are available globally across your entire system!

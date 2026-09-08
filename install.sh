@@ -34,7 +34,7 @@ echo -e " ${GREEN}[OK]${NC} Node.js detected: ${GREEN}${NODE_VERSION}${NC}"
 # 2. Setup Target Directory
 INSTALL_DIR="$HOME/.project-protector"
 BIN_DIR="$HOME/.local/bin"
-REPO_URL="${PROTECTOR_REPO_URL:-https://github.com/firdavsabdualiev/project-protector.git}"
+REPO_URL="${PROTECTOR_REPO_URL:-https://github.com/SkellyVA/project-protector.git}"
 
 echo -e "\n${CYAN}📁 Preparing installation directory: ${INSTALL_DIR}${NC}"
 mkdir -p "$INSTALL_DIR"
@@ -51,7 +51,7 @@ else
         git clone --depth 1 "$REPO_URL" "$INSTALL_DIR" --quiet
     else
         echo -e "${CYAN}⬇️ Downloading tarball...${NC}"
-        curl -fsSL https://github.com/firdavsabdualiev/project-protector/archive/refs/heads/main.tar.gz | tar -xz -C "$INSTALL_DIR" --strip-components=1
+        curl -fsSL https://github.com/SkellyVA/project-protector/archive/refs/heads/main.tar.gz | tar -xz -C "$INSTALL_DIR" --strip-components=1
     fi
 fi
 
