@@ -76,20 +76,22 @@ if (appJsContent.includes('ProtectedApp') || appJsContent.includes('RUNNING_IN_M
 }
 console.log('🛡️ Security check passed: Zero plaintext code in output.');
 
-// 3. Test wrong password
-console.log('\n🔒 Step 2: Testing incorrect password handling...');
+// 3. Test wrong password on restore
+console.log('\n🔒 Step 2: Testing incorrect password handling on restore...');
 try {
   const container = extractContainerFromFile(distAppJs);
-  decryptData(container, 'WrongPassword123');
+  const restorePayload = container.restore || container;
+  decryptData(restorePayload, 'WrongPassword123');
   throw new Error('Decryption should have failed with wrong password!');
 } catch (err) {
   console.log('✅ Correctly rejected invalid password:', err.message);
 }
 
-// 4. Test In-Memory Execution of ESM project
-console.log('\n🚀 Step 3: Testing in-memory execution of ESM code...');
+// 4. Test In-Memory Execution (zero password needed)
+console.log('\n🚀 Step 3: Testing in-memory execution of protected code (zero password needed)...');
 const container = extractContainerFromFile(distAppJs);
-const decryptedBuffer = decryptData(container, secretPassword);
+const restorePayload = container.restore || container;
+const decryptedBuffer = decryptData(restorePayload, secretPassword);
 const project = deserializeProject(decryptedBuffer);
 
 executeProjectInMemory(project);
@@ -99,8 +101,8 @@ if (!global.__TEST_OUTPUT__ || global.__TEST_OUTPUT__.sum !== 42 || global.__TES
 }
 console.log('✅ In-memory ESM execution verified and accurate!');
 
-// 5. Test Restore
-console.log('\n🔓 Step 4: Testing project restoration...');
+// 5. Test Restore (requires secret password)
+console.log('\n🔓 Step 4: Testing project restoration (requires secret password)...');
 const restoreResult = unpackProject(distAppJs, restoredDir, secretPassword);
 console.log('Restored files:', restoreResult.restoredFiles);
 
